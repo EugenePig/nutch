@@ -20,6 +20,11 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.navbar.Navbar;
 
 public class VerticalMenu extends Navbar {
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
+
   public VerticalMenu(String componentId) {
     super(componentId);
     // TODO Auto-generated constructor stub

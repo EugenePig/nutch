@@ -339,6 +339,7 @@ public class WebTableReader extends NutchTool implements Tool {
     job.setOutputKeyClass(Text.class);
     job.setOutputValueClass(Text.class);
 
+    @SuppressWarnings("unused")
     boolean success = job.waitForCompletion(true);
 
     if (LOG.isInfoEnabled()) {

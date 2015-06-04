@@ -20,6 +20,11 @@ import java.io.Serializable;
 import java.util.Map;
 
 public class JobInfo implements Serializable {
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
+
   public static enum JobType {
     INJECT, GENERATE, FETCH, PARSE, UPDATEDB, INDEX, READDB, CLASS
   };

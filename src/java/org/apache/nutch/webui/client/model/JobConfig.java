@@ -25,6 +25,10 @@ import org.apache.nutch.webui.client.model.JobInfo.JobType;
 import com.google.common.collect.Maps;
 
 public class JobConfig implements Serializable {
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
   private String crawlId;
   private JobType type;
   private String confId = "default";

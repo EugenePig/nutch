@@ -49,6 +49,11 @@ import com.google.common.collect.Lists;
  */
 public class SeedPage extends AbstractBasePage<SeedList> {
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
+
   @SpringBean
   private SeedListService seedListService;
 
@@ -64,6 +69,11 @@ public class SeedPage extends AbstractBasePage<SeedList> {
 
   public SeedPage(final PageParameters parameters) {
     initPage(new LoadableDetachableModel<SeedList>() {
+
+      /**
+       * 
+       */
+      private static final long serialVersionUID = 1L;
 
       @Override
       protected SeedList load() {
@@ -83,6 +93,11 @@ public class SeedPage extends AbstractBasePage<SeedList> {
 
   private void addBaseForm() {
     Form<SeedList> form = new Form<SeedList>("seedList", getModel()) {
+      /**
+       * 
+       */
+      private static final long serialVersionUID = 1L;
+
       @Override
       protected void onSubmit() {
         seedListService.save(getModelObject());
@@ -99,6 +114,11 @@ public class SeedPage extends AbstractBasePage<SeedList> {
 
     RefreshingView<SeedUrl> seedUrls = new RefreshingView<SeedUrl>("seedUrls") {
 
+      /**
+       * 
+       */
+      private static final long serialVersionUID = 1L;
+
       @Override
       protected Iterator<IModel<SeedUrl>> getItemModels() {
         return new CpmIteratorAdapter<SeedUrl>(getModelObject().getSeedUrls());
@@ -108,6 +128,11 @@ public class SeedPage extends AbstractBasePage<SeedList> {
       protected void populateItem(Item<SeedUrl> item) {
         item.add(new Label("url"));
         item.add(new AjaxLink<SeedUrl>("delete", item.getModel()) {
+
+          /**
+           * 
+           */
+          private static final long serialVersionUID = 1L;
 
           @Override
           public void onClick(AjaxRequestTarget target) {
@@ -127,6 +152,11 @@ public class SeedPage extends AbstractBasePage<SeedList> {
     urlForm.setOutputMarkupId(true);
     urlForm.add(new TextField<String>("url"));
     urlForm.add(new AjaxSubmitLink("addUrl", urlForm) {
+      /**
+       * 
+       */
+      private static final long serialVersionUID = 1L;
+
       @Override
       protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
         addSeedUrl();

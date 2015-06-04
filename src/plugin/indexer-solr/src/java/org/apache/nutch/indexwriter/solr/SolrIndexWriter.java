@@ -27,9 +27,9 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.nutch.indexer.CleaningJob;
 import org.apache.nutch.indexer.NutchDocument;
 import org.apache.nutch.indexer.IndexWriter;
-import org.apache.solr.client.solrj.SolrServer;
+import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrServerException;
-import org.apache.solr.client.solrj.impl.HttpSolrServer;
+import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.apache.solr.common.SolrInputDocument;
 
 public class SolrIndexWriter implements IndexWriter {
@@ -37,7 +37,7 @@ public class SolrIndexWriter implements IndexWriter {
   public static final Logger LOG = LoggerFactory
       .getLogger(SolrIndexWriter.class);
 
-  private HttpSolrServer solr;
+  private HttpSolrClient solr;
   private SolrMappingReader solrMapping;
 
   private Configuration config;

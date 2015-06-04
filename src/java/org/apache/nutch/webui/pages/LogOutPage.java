@@ -16,6 +16,11 @@
  */
 package org.apache.nutch.webui.pages;
 
-public class LogOutPage extends AbstractBasePage {
+public class LogOutPage extends AbstractBasePage<Object> {
+
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
 
 }

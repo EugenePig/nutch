@@ -17,6 +17,11 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.form.BootstrapForm;
 
 public class InstancePanel extends Modal {
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
+
   private BootstrapForm<NutchInstance> form;
 
   private NotificationPanel notificationPanel;
@@ -41,6 +46,11 @@ public class InstancePanel extends Modal {
         .setRequired(false));
 
     addButton(new AjaxSubmitLink("button", form) {
+      /**
+       * 
+       */
+      private static final long serialVersionUID = 1L;
+
       @Override
       protected void onSubmit(AjaxRequestTarget target, Form<?> ajaxForm) {
         instanceService.saveInstance(form.getModelObject());

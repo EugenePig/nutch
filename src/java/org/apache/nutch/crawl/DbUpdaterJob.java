@@ -24,7 +24,6 @@ import java.util.Map;
 import org.apache.avro.util.Utf8;
 import org.apache.gora.filter.FilterOp;
 import org.apache.gora.filter.MapFieldValueFilter;
-import org.apache.gora.filter.SingleFieldValueFilter;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;

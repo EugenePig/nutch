@@ -23,6 +23,10 @@ import java.util.Set;
 
 public class NutchStatus implements Serializable {
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
   private Date startDate;
   private Set<String> configuration;
   private Collection<JobInfo> jobs;

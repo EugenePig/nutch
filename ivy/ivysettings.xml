@@ -39,6 +39,10 @@
     value="[organisation]/[module]/[revision]/[module]-[revision]"/>
   <property name="maven2.pattern.ext"
     value="${maven2.pattern}.[ext]"/>
+  <property name="m2-pattern" value="[organisation]/[module]/[revision]/[module]-[revision](-[classifier]).[ext]" override="false" /> 
+ 
+  <property name="local-maven2-dir" value="${user.home}/.m2/repository/" />
+
   <!-- pull in the local repository -->
   <include url="${ivy.default.conf.dir}/ivyconf-local.xml"/>
   <settings defaultResolver="default"/>
@@ -63,15 +67,29 @@
       pattern="${maven2.pattern.ext}"
       m2compatible="true"
       />
-     
+     <ibiblio name="local-maven"
+      root="${local-maven2-dir}"
+      pattern="${m2-pattern}"
+      m2compatible="true"
+      />
+     <filesystem name="local-maven-2" m2compatible="true"
+         local="true">
+       <artifact
+         pattern="${local-maven2-dir}/[organisation]/[module]/[revision]/[module]-[revision].[ext]" />
+       <ivy
+         pattern="${local-maven2-dir}/[organisation]/[module]/[revision]/[module]-[revision].pom" />
+     </filesystem>
+
     <chain name="default" dual="true">
       <resolver ref="local"/>
       <resolver ref="maven2"/>
       <resolver ref="sonatype"/>
       <resolver ref="apache-snapshot"/>
+      <resolver ref="local-maven-2"/>
     </chain>
     <chain name="internal">
       <resolver ref="local"/>
+      <resolver ref="local-maven-2"/>
     </chain>
     <chain name="external">
       <resolver ref="maven2"/>
@@ -93,6 +111,7 @@
     rather than look for them online.
     -->
     <module organisation="org.apache.nutch" name=".*" resolver="internal"/>
+    <module organisation="org.apache.gora" name=".*" resolver="internal"/>
     <module organisation="org.restlet" name=".*" resolver="restletchain"/>
     <module organisation="org.restlet.jse" name=".*" resolver="restletchain"/>
   </modules>

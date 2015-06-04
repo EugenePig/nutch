@@ -29,6 +29,11 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.util.time.Duration;
 
 public class InstancesPage extends AbstractBasePage<Void> {
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
+
   @SpringBean
   private NutchInstanceService instanceService;
 
@@ -56,6 +61,11 @@ public class InstancesPage extends AbstractBasePage<Void> {
     RefreshingView<NutchInstance> instances = new RefreshingView<NutchInstance>(
         "instances") {
 
+      /**
+           * 
+           */
+          private static final long serialVersionUID = 1L;
+
       @Override
       protected Iterator<IModel<NutchInstance>> getItemModels() {
         return new CpmIteratorAdapter<NutchInstance>(
@@ -72,6 +82,11 @@ public class InstancesPage extends AbstractBasePage<Void> {
 
   private AjaxLink<NutchInstance> addInstanceButton() {
     return new AjaxLink<NutchInstance>("addInstance") {
+      /**
+       * 
+       */
+      private static final long serialVersionUID = 1L;
+
       @Override
       public void onClick(AjaxRequestTarget target) {
         instancePanel.setModel(new CompoundPropertyModel<NutchInstance>(
@@ -84,6 +99,11 @@ public class InstancesPage extends AbstractBasePage<Void> {
 
   private void populateInstanceRow(final Item<NutchInstance> item) {
     item.add(new AjaxLink<NutchInstance>("editInstance") {
+      /**
+       * 
+       */
+      private static final long serialVersionUID = 1L;
+
       @Override
       public void onClick(AjaxRequestTarget target) {
         instancePanel.setModel(item.getModel());
@@ -95,6 +115,11 @@ public class InstancesPage extends AbstractBasePage<Void> {
     item.add(new Label("username"));
     item.add(createStatusLabel());
     item.add(new AjaxLink<NutchInstance>("instanceDelete", item.getModel()) {
+      /**
+       * 
+       */
+      private static final long serialVersionUID = 1L;
+
       @Override
       public void onClick(AjaxRequestTarget target) {
         instanceService.removeInstance(getModelObject().getId());

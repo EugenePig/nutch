@@ -18,6 +18,11 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 public class SettingsPage extends AbstractBasePage<Void> {
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
+
   @SpringBean
   private NutchService nutchService;
 
@@ -28,6 +33,11 @@ public class SettingsPage extends AbstractBasePage<Void> {
     settingsTable.setOutputMarkupId(true);
     RefreshingView<NutchConfig> nutchConfig = new RefreshingView<NutchConfig>(
         "settings") {
+
+      /**
+           * 
+           */
+          private static final long serialVersionUID = 1L;
 
       @Override
       protected Iterator<IModel<NutchConfig>> getItemModels() {

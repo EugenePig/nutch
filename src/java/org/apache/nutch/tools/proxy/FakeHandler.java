@@ -147,6 +147,7 @@ public class FakeHandler extends AbstractTestbedHandler {
       baseDomain = u.getHost();
       // chop off the TLD
       int pos = baseDomain.lastIndexOf('.');
+      @SuppressWarnings("unused")
       String tld = baseDomain.substring(pos);
       baseDomain = baseDomain.substring(0, pos);
       String link;

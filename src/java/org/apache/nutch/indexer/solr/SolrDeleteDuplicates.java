@@ -19,7 +19,6 @@ package org.apache.nutch.indexer.solr;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -43,9 +42,8 @@ import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 import org.apache.nutch.util.NutchConfiguration;
 import org.apache.solr.client.solrj.SolrQuery;
-import org.apache.solr.client.solrj.SolrServer;
+import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrServerException;
-import org.apache.solr.client.solrj.impl.HttpSolrServer;
 import org.apache.solr.client.solrj.request.UpdateRequest;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
@@ -246,7 +244,7 @@ public class SolrDeleteDuplicates
         InterruptedException {
       Configuration conf = context.getConfiguration();
       int numSplits = context.getNumReduceTasks();
-      SolrServer solr = SolrUtils.getHttpSolrServer(conf);
+      SolrClient solr = SolrUtils.getHttpSolrServer(conf);
 
       final SolrQuery solrQuery = new SolrQuery(SOLR_GET_ALL_QUERY);
       solrQuery.setFields(SolrConstants.ID_FIELD);
@@ -276,7 +274,7 @@ public class SolrDeleteDuplicates
     public RecordReader<Text, SolrRecord> createRecordReader(InputSplit split,
         TaskAttemptContext context) throws IOException, InterruptedException {
       Configuration conf = context.getConfiguration();
-      SolrServer solr = SolrUtils.getHttpSolrServer(conf);
+      SolrClient solr = SolrUtils.getHttpSolrServer(conf);
       SolrInputSplit solrSplit = (SolrInputSplit) split;
       final int numDocs = (int) solrSplit.getLength();
 
@@ -300,7 +298,7 @@ public class SolrDeleteDuplicates
 
   private Configuration conf;
 
-  private SolrServer solr;
+  private SolrClient solr;
 
   private int numDeletes = 0;
 
@@ -370,7 +368,8 @@ public class SolrDeleteDuplicates
 
     getConf().set(SolrConstants.SERVER_URL, solrUrl);
 
-    Job job = new Job(getConf(), "solrdedup");
+    Job job = Job.getInstance(getConf(), "solrdedup");
+    job.setJarByClass(SolrDeleteDuplicates.class);   // fix for java.lang.ClassNotFoundException: org.apache.nutch.indexer.solr.SolrDeleteDuplicates$SolrInputFormat
 
     job.setInputFormatClass(SolrInputFormat.class);
     job.setOutputFormatClass(NullOutputFormat.class);

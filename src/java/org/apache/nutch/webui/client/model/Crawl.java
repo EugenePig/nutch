@@ -29,6 +29,11 @@ import com.j256.ormlite.field.DatabaseField;
 
 @Entity
 public class Crawl implements Serializable {
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
+
   public enum CrawlStatus {
     NEW, CRAWLING, FINISHED, ERROR
   }

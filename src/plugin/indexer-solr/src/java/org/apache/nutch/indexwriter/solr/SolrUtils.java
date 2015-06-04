@@ -8,7 +8,7 @@ import org.apache.http.params.HttpParams;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.hadoop.conf.Configuration;
-import org.apache.solr.client.solrj.impl.HttpSolrServer;
+import org.apache.solr.client.solrj.impl.HttpSolrClient;
 
 import java.net.MalformedURLException;
 
@@ -16,7 +16,7 @@ public class SolrUtils {
 
   public static Logger LOG = LoggerFactory.getLogger(SolrUtils.class);
 
-  public static HttpSolrServer getHttpSolrServer(Configuration job)
+  public static HttpSolrClient getHttpSolrServer(Configuration job)
       throws MalformedURLException {
     DefaultHttpClient client = new DefaultHttpClient();
 
@@ -40,7 +40,7 @@ public class SolrUtils {
       client.setParams(params);
     }
 
-    return new HttpSolrServer(job.get(SolrConstants.SERVER_URL), client);
+    return new HttpSolrClient(job.get(SolrConstants.SERVER_URL), client);
   }
 
   public static String stripNonCharCodepoints(String input) {

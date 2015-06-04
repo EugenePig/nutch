@@ -30,6 +30,11 @@ import org.apache.nutch.webui.client.model.ConnectionStatus;
 @Entity
 public class NutchInstance implements Serializable {
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
+
   @Id
   @GeneratedValue
   private Long id;

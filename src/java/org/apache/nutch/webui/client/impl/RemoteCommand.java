@@ -25,6 +25,10 @@ import org.apache.nutch.webui.client.model.JobInfo;
 import org.joda.time.Duration;
 
 public class RemoteCommand implements Serializable {
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
   private JobConfig jobConfig;
   private JobInfo jobInfo = new JobInfo();
   private Duration timeout;

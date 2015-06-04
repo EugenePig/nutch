@@ -39,6 +39,10 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
  */
 public class SeedListsPage extends AbstractBasePage<Void> {
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
   @SpringBean
   private SeedListService seedListService;
 
@@ -46,6 +50,11 @@ public class SeedListsPage extends AbstractBasePage<Void> {
 
     RefreshingView<SeedList> seedLists = new RefreshingView<SeedList>(
         "seedLists") {
+
+      /**
+           * 
+           */
+          private static final long serialVersionUID = 1L;
 
       @Override
       protected Iterator<IModel<SeedList>> getItemModels() {
@@ -65,6 +74,11 @@ public class SeedListsPage extends AbstractBasePage<Void> {
         item.add(new Label("seedUrlsCount"));
 
         item.add(new Link<SeedList>("delete", item.getModel()) {
+          /**
+           * 
+           */
+          private static final long serialVersionUID = 1L;
+
           @Override
           public void onClick() {
             seedListService.delete(item.getModelObject().getId());

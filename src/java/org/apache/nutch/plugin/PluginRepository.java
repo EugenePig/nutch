@@ -315,7 +315,7 @@ public class PluginRepository {
     }
   }
 
-  public Class getCachedClass(PluginDescriptor pDescriptor, String className)
+  public Class<?> getCachedClass(PluginDescriptor pDescriptor, String className)
       throws ClassNotFoundException {
     Map<PluginClassLoader, Class> descMap = CLASS_CACHE.get(className);
     if (descMap == null) {

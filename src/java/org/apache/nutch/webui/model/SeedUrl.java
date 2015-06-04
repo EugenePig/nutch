@@ -30,6 +30,11 @@ import com.j256.ormlite.field.DatabaseField;
 @Entity
 public class SeedUrl implements Serializable {
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
+
   @Id
   @GeneratedValue
   private Long id;

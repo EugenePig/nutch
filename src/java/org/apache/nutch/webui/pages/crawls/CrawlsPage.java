@@ -55,6 +55,11 @@ import org.apache.wicket.util.time.Duration;
  */
 public class CrawlsPage extends AbstractBasePage<Void> {
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
+
   private static final Duration UPDATE_TIMEOUT = Duration.seconds(2);
 
   @SpringBean
@@ -69,6 +74,11 @@ public class CrawlsPage extends AbstractBasePage<Void> {
     crawlsTable.add(new AjaxSelfUpdatingTimerBehavior(UPDATE_TIMEOUT));
 
     RefreshingView<Crawl> crawls = new RefreshingView<Crawl>("crawls") {
+
+      /**
+       * 
+       */
+      private static final long serialVersionUID = 1L;
 
       @Override
       protected Iterator<IModel<Crawl>> getItemModels() {
@@ -88,6 +98,11 @@ public class CrawlsPage extends AbstractBasePage<Void> {
     add(crawlPanel);
 
     add(new AjaxLink<Crawl>("newCrawl") {
+      /**
+       * 
+       */
+      private static final long serialVersionUID = 1L;
+
       @Override
       public void onClick(AjaxRequestTarget target) {
         editCrawl(target, new CompoundPropertyModel<Crawl>(createNewCrawl()));
@@ -97,6 +112,11 @@ public class CrawlsPage extends AbstractBasePage<Void> {
 
   private void populateCrawlRow(Item<Crawl> item) {
     item.add(new AjaxLink<Crawl>("edit", item.getModel()) {
+      /**
+       * 
+       */
+      private static final long serialVersionUID = 1L;
+
       @Override
       public void onClick(AjaxRequestTarget target) {
         editCrawl(target, getModel());
@@ -107,6 +127,11 @@ public class CrawlsPage extends AbstractBasePage<Void> {
     item.add(new Label("progress"));
     item.add(createStatusLabel());
     item.add(new Link<Crawl>("start", item.getModel()) {
+      /**
+       * 
+       */
+      private static final long serialVersionUID = 1L;
+
       @Override
       public void onClick() {
         crawlService.startCrawl(getModelObject().getId(), getCurrentInstance());
@@ -114,6 +139,11 @@ public class CrawlsPage extends AbstractBasePage<Void> {
     });
 
     item.add(new Link<Crawl>("delete", item.getModel()) {
+      /**
+       * 
+       */
+      private static final long serialVersionUID = 1L;
+
       @Override
       public void onClick() {
         crawlService.deleteCrawl(getModelObject().getId());

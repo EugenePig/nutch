@@ -32,6 +32,10 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.block.LabelType;
  * 
  */
 public class ColorEnumLabel<E extends Enum<E>> extends EnumLabel<E> {
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
   private Map<E, LabelType> labelTypeMap;
 
   ColorEnumLabel(String id, IModel<E> model, Map<E, LabelType> labelTypeMap) {
@@ -47,6 +51,10 @@ public class ColorEnumLabel<E extends Enum<E>> extends EnumLabel<E> {
   }
 
   private class EnumCssModel extends AbstractReadOnlyModel<LabelType> {
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
     private IModel<E> model;
 
     public EnumCssModel(IModel<E> model) {

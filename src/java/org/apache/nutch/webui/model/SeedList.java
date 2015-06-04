@@ -33,6 +33,11 @@ import com.j256.ormlite.field.ForeignCollectionField;
 @Entity
 public class SeedList implements Serializable {
 
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
+
   @Id
   @GeneratedValue
   private Long id;

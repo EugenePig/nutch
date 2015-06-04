@@ -40,6 +40,11 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.dialog.Modal;
 import de.agilecoders.wicket.core.markup.html.bootstrap.form.BootstrapForm;
 
 public class CrawlPanel extends Modal {
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
+
   private static final int MAX_ROUNDS = 10;
 
   private BootstrapForm<Crawl> form;
@@ -70,6 +75,11 @@ public class CrawlPanel extends Modal {
         .setRequired(true));
 
     addButton(new AjaxSubmitLink("button", form) {
+      /**
+       * 
+       */
+      private static final long serialVersionUID = 1L;
+
       @Override
       protected void onSubmit(AjaxRequestTarget target, Form<?> ajaxForm) {
         crawlService.saveCrawl(form.getModelObject());
